@@ -1,6 +1,14 @@
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [inputText, setInputText] = useState("")
+
+
+  const handleChange = (event) => {
+    const newValue = event.target.value;
+    setInputText(newValue);
+  }
   return (
     <div className="container">
       <div className="heading">
@@ -8,7 +16,7 @@ function App() {
       </div>
 
       <div className='form'>
-        <input type="text" placeholder='Place your todo list here' />
+        <input onChange={handleChange} type="text" placeholder='Place your todo list here' value={inputText} />
         <button>
           <span>Add</span>
         </button>
