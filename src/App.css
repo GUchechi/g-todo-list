@@ -27,3 +27,10 @@ body {
     padding: 1rem;
     box-sizing: border-box;
 }
+
+.heading {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
