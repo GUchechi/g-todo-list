@@ -3,7 +3,14 @@ import './App.css';
 
 function App() {
   const [inputText, setInputText] = useState("")
+  const [items, setItems] = useState([])
 
+  const addItems = () => {
+    setItems(prevItems => {
+      return [...prevItems, inputText]
+    });
+    setInputText("")
+  }
 
   const handleChange = (event) => {
     const newValue = event.target.value;
@@ -17,9 +24,16 @@ function App() {
 
       <div className='form'>
         <input onChange={handleChange} type="text" placeholder='Place your todo list here' value={inputText} />
-        <button>
+        <button onClick={addItems}>
           <span>Add</span>
         </button>
+      </div>
+      <div>
+        <ul>
+          {items.map((item) => (
+            <li>{items}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
