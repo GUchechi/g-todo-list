@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import TodoItem from './components/TodoItem';
 
 function App() {
   const [inputText, setInputText] = useState("")
@@ -10,6 +11,14 @@ function App() {
       return [...prevItems, inputText]
     });
     setInputText("")
+  }
+
+  function deleteItem(id) {
+    setItems(prevItems => {
+      return prevItems.filter((item, index) => {
+        return index !== id;
+      });
+    });
   }
 
   const handleChange = (event) => {
@@ -30,8 +39,13 @@ function App() {
       </div>
       <div>
         <ul>
-          {items.map((item) => (
-            <li>{items}</li>
+          {items.map((todoItem,index) => (
+            <TodoItem 
+              key={index}
+              text={todoItem}
+              id={index}
+              onChecked={deleteItem}
+            />
           ))}
         </ul>
       </div>
